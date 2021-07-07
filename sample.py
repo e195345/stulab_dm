@@ -2,6 +2,13 @@ import pandas as pd
 from sklearn import metrics, preprocessing
 from sklearn.svm import LinearSVC
 import numpy as np
+from sklearn.model_selection import GridSearchCV
+
+parameters = [{'max_iter': 1000000, 'C': np.logspace(0, 10, 100), 'penalty': 'l1', 'dual': False, 'multi_class': {'ovr', 'crammer_singer'},
+               'class_weight': {'None', 'balanced'}},
+              {'max_iter': 1000000, 'C': np.logspace(0, 10, 100), 'multi_class': {'ovr', 'crammer_singer'}, 'loss': 'hinge', 'class_weight':
+                  {'None', 'balanced'}}]
+
 
 # データ読み込み
 df = pd.read_csv("./1year.csv", skiprows=1).dropna(how='any').reset_index(drop=True)
@@ -32,7 +39,13 @@ partition = int(len(df)*0.8)
 X_train, X_test = X_normal[:partition], X_normal[partition:]
 Y_train, Y_test = Y[:partition], Y[partition:]
 
-clf_result = LinearSVC(max_iter=1000000, C=5.0)
+
+clf = GridSearchCV(LinearSVC(), parameters, n_jobs=-1, cv=5)
+clf.fit(X_train, Y_train)
+print("ベストパラメータ")
+print(clf.best_estimator_)
+print("--------通常-------")
+clf_result = LinearSVC(max_iter=1000000, C=5.0, penalty='l1', dual=False)
 clf_result.fit(X_train, Y_train)
 
 # 正答率
