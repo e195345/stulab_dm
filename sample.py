@@ -4,10 +4,10 @@ from sklearn.svm import LinearSVC
 import numpy as np
 from sklearn.model_selection import GridSearchCV
 
-parameters = [{'max_iter': 1000000, 'C': np.logspace(0, 10, 100), 'penalty': 'l1', 'dual': False, 'multi_class': {'ovr', 'crammer_singer'},
-               'class_weight': {'None', 'balanced'}},
-              {'max_iter': 1000000, 'C': np.logspace(0, 10, 100), 'multi_class': {'ovr', 'crammer_singer'}, 'loss': 'hinge', 'class_weight':
-                  {'None', 'balanced'}}]
+parameters = [{'max_iter': [100000000], 'C': np.logspace(0, 10, 100), 'penalty': ['l1'], 'dual': [False],
+               'multi_class': ['ovr']},
+              {'max_iter': [100000000], 'C': np.logspace(0, 10, 100), 'loss': ['hinge']}
+              ]
 
 
 # データ読み込み
@@ -45,7 +45,7 @@ clf.fit(X_train, Y_train)
 print("ベストパラメータ")
 print(clf.best_estimator_)
 print("--------通常-------")
-clf_result = LinearSVC(max_iter=1000000, C=5.0, penalty='l1', dual=False)
+clf_result = LinearSVC(max_iter=1000000, C=5.0, multi_class='crammer_singer')
 clf_result.fit(X_train, Y_train)
 
 # 正答率
