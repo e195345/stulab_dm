@@ -47,7 +47,3 @@ from sklearn.metrics import r2_score
 print("決定係数")
 print('r^2 train data: ', r2_score(Y_train, Y_train_pred))
 print('r^2 test data: ', r2_score(Y_test, Y_pred))
-
-#精度
-print('トレーニングデータの精度 :', lr.score(X_train, Y_train))
-print('テストデータの精度 : ', lr.score(X_test, Y_test))

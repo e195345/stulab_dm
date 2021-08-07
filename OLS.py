@@ -28,28 +28,20 @@ Y = df['label']
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, train_size = 0.7, test_size = 0.3, random_state = 0)
 
 #線形回帰モデルの構築
-#lr =  sm.OLS(formula,X,sbbset=None,drop_cols=None)
-lr_model_1 = sm.OLS(Y,X)
-lr_model_2=sm.OLS(Y_train,X_train)
+lr_model=sm.OLS(Y_train,X_train)
 lr_model_3=sm.OLS(Y_test,X_test)
-lr_model_3=sm.OLS(a,)
+
 #学習
-res1 = lr_model_1.fit()
-res2=lr_model_2.fit()
-res3=lr_model_3.fit()
+train_res=lr_model.fit()
+test_res=lr_model_3.fit()
 
 #結果
-print(res2.summary())
+print(train_res.summary())
 
 #精度
-print("1")
-#print('Parameters: ', res1.params)
-print('R2: ', res1.rsquared)
 print("train")
 #print('Parameters: ', res2.params)
-print('R2: ', res2.rsquared)
+print('R2: ', train_res.rsquared)
 print("test")
 #print('Parameters: ', res3.params)
-print('R2: ', res3.rsquared)
-print("精度 : ")
-
+print('R2: ', test_res.rsquared)

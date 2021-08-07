@@ -36,6 +36,7 @@ for i in range(20):
 """
 model = ar_model.AR(df['change'][1:])
 result1 = model.fit(maxlag=1)
+
 # 残差
 resid1 = result1.resid
 #print(model.select_order(15).summary())
