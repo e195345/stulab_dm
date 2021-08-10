@@ -1,5 +1,7 @@
 # group3のリポジトリ
-sample.py:sklearnのlinearSVCモデルを使用して作成したコード
+tenki.py:sklearnのlinearSVCモデルを使用して作成したコード(今の天気を予測させる)
+
+tenki_future.py:sklearnのlinearSVCモデルを使用して作成したコード(3時間後の天気を予測させる)
 
 linearregression.py:sklearnのlinearregressionモデルを使用して作成したコード
 
