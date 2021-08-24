@@ -22,18 +22,18 @@ if __name__ == "__main__":
     i = len(df)-1
     while i > 0:
         if i == len(df)-1:
-            label = df.at[i, 'label']
-            df.at[i, 'label'] = np.nan
+            label = df.at[i, '天気']
+            df.at[i, '天気'] = np.nan
         else:
-            hokan = df.at[i, 'label']
-            df.at[i, 'label'] = label
+            hokan = df.at[i, '天気']
+            df.at[i, '天気'] = label
             label = hokan
         i -= 1
 
     df = df.dropna(how='any').reset_index(drop=True)
 
     X = df[['気温', '降水量', '雲量', '湿度']]
-    Y = df['label']
+    Y = df['天気']
 
     sc = preprocessing.StandardScaler()
     sc.fit(X)
@@ -55,5 +55,4 @@ if __name__ == "__main__":
 
     # 混合行列
     Mixed_matrix = metrics.confusion_matrix(Y_test, pre)
-    print("標準化")
     print(Mixed_matrix)
