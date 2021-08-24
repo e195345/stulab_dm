@@ -1,4 +1,6 @@
 # group3のリポジトリ
+グループ3最終レポート.pdf:知能情報実験III データマイニング班 グループ3が作成した実験の最終レポート
+
 tenki.py:sklearnのlinearSVCモデルを使用して作成したコード(今の天気を予測させる)
 
 tenki_future.py:sklearnのlinearSVCモデルを使用して作成したコード(3時間後の天気を予測させる)
